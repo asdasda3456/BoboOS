@@ -105,45 +105,6 @@ void print_int(int integer) {
     }
 }
 
-void print_float(float value) {
-    if (value < 0) {
-        print_char('-'); 
-        value = -value; 
-    }
-
-    int integerPart = (int)value; 
-    float decimalPart = value - integerPart; 
-
-    char buffer[20];
-    size_t index = 0;
-
-    if (integerPart == 0) {
-        print_char('0');
-    } else {
-        while (integerPart > 0) {
-            buffer[index++] = (integerPart % 10) + '0'; 
-            integerPart /= 10; 
-        }
-        for (size_t i = index; i > 0; i--) {
-            print_char(buffer[i - 1]); 
-        }
-    }
-
-    print_char('.');
-
-    decimalPart *= 1000000; 
-    int decimalInt = (int)decimalPart; 
-
-    for (int i = 0; i < 3; i++) { 
-        buffer[i] = (decimalInt % 10) + '0'; 
-        decimalInt /= 10; 
-    }
-
-    for (int i = 5; i >= 0; i--) { 
-        print_char(buffer[i]);
-    }
-}
-
 void print_set_color(uint8_t foreground, uint8_t background) {
     color = foreground + (background << 4);
 }
